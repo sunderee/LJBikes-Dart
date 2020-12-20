@@ -1,6 +1,8 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'dart:io';
 import 'package:ljbikes/src/utils/api.exception.dart';
+
+import '../utils/api.exception.dart';
 
 class ApiProvider {
   final String _baseURL;
@@ -10,18 +12,22 @@ class ApiProvider {
   Future<dynamic>? makeGetRequest(
     String endpoint, {
     Map<String, String>? queryParams,
-    Map<String, String>? headers,
   }) async {
-    final http.Response response = await http.get(
-      Uri.https(_baseURL, endpoint, queryParams),
-      headers: headers,
+    final client = await HttpClient().getUrl(
+      Uri.https(
+        _baseURL,
+        endpoint,
+        queryParams,
+      ),
     );
-
-    return response.statusCode == 200
-        ? json.decode(response.body)
-        : throw ApiException(
-            error: 'Response returned ${response.statusCode}',
-            description: response.body,
-          );
+    client.headers.set('Content-Type', 'application/json');
+    final response = await client.close();
+    await for (String result in response.transform(Utf8Decoder())) {
+      return jsonDecode(result);
+    }
+    throw ApiException(
+      error: '${response.statusCode}',
+      description: 'GET request failed\n$response',
+    );
   }
 }

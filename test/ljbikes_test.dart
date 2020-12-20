@@ -8,7 +8,7 @@ void main() {
 
   test('retrieve bike stands in Ljubljana', () async {
     final stands = await retrieveAllStands();
-    print(stands);
+    print('Found ${stands?.length} stands');
     expect(stands != null, true);
   });
 }
