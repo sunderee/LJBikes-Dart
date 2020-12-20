@@ -1,4 +1,4 @@
-import 'package:ljbikes/src/ljbikes_base.dart';
+import 'package:ljbikes/ljbikes.dart';
 
 Future<void> main() async {
   final stands = await LJBikesBase.instance.retrieveAllStands();

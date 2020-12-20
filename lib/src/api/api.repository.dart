@@ -4,8 +4,6 @@ import 'package:ljbikes/src/api/api.model.dart';
 import 'package:ljbikes/src/api/api.provider.dart';
 import 'package:ljbikes/src/utils/api.exception.dart';
 
-import '../utils/api.exception.dart';
-
 abstract class _IApiRepository {
   Future<List<StandsModel>?> retrieveAllStands();
 }

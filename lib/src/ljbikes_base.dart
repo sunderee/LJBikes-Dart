@@ -1,9 +1,6 @@
 import 'package:ljbikes/src/api/api.model.dart';
 import 'package:ljbikes/src/api/api.repository.dart';
 
-import 'api/api.repository.dart';
-import 'api/api.repository.dart';
-
 class LJBikesBase {
   static final LJBikesBase instance = LJBikesBase._();
   late final ApiRepository _repository;

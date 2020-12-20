@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:ljbikes/src/ljbikes_base.dart';
+import 'package:ljbikes/ljbikes.dart';
 import 'package:test/test.dart';
 
 void main() {
