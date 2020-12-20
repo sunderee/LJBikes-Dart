@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:ljbikes/src/utils/api.exception.dart';
-
+import '../utils/api.const.dart';
 import '../utils/api.exception.dart';
 
 class ApiProvider {
-  final String _baseURL;
-
-  const ApiProvider(this._baseURL);
+  const ApiProvider();
 
   Future<dynamic>? makeGetRequest(
     String endpoint, {
@@ -15,7 +13,7 @@ class ApiProvider {
   }) async {
     final client = await HttpClient().getUrl(
       Uri.https(
-        _baseURL,
+        BASE_URL,
         endpoint,
         queryParams,
       ),

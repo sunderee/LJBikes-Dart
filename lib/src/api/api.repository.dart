@@ -1,6 +1,5 @@
 import 'package:ljbikes/src/api/api.model.dart';
 import 'package:ljbikes/src/api/api.provider.dart';
-import 'package:ljbikes/src/utils/api.const.dart';
 import 'package:ljbikes/src/utils/api.exception.dart';
 
 abstract class _IApiRepository {
@@ -9,7 +8,7 @@ abstract class _IApiRepository {
 
 class ApiRepository implements _IApiRepository {
   static final ApiRepository instance = ApiRepository._();
-  final _provider = ApiProvider(BASE_URL);
+  final _provider = ApiProvider();
 
   ApiRepository._();
 
