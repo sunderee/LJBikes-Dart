@@ -1,51 +1,22 @@
 import 'package:ljbikes/src/utils/pair.dart';
 
-abstract class _ApiBaseModel {
-  const _ApiBaseModel();
+class StandsModel {
+  int? id;
+  String? name;
+  String? address;
+  Pair<double, double>? location;
+  int? capacity;
+  int? availableBikes;
 
-  dynamic fromJson(dynamic json);
-  Map<String, dynamic> toJson();
-}
-
-class StandsModel extends _ApiBaseModel {
-  final int? id;
-  final String? name;
-  final String? address;
-  final Pair<double, double>? location;
-  final int? capacity;
-  final int? availableBikes;
-
-  const StandsModel({
-    this.id,
-    this.name,
-    this.address,
-    this.location,
-    this.capacity,
-    this.availableBikes,
-  });
-
-  @override
-  StandsModel fromJson(dynamic json) => StandsModel(
-        id: json['number'],
-        name: json['name'],
-        address: '${json['address']}, Ljubljana, Slovenia',
-        location: Pair<double, double>(
-          json['position']['latitude'],
-          json['position']['longitude'],
-        ),
-        capacity: json['totalStands']['capacity'],
-        availableBikes: json['totalStands']['bikes'],
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'location': '${this.name}: ${this.address}',
-        'coordinates': [
-          this.location?.first,
-          this.location?.second,
-        ],
-        'capacity': this.capacity,
-        'bikes': this.availableBikes,
-      };
+  StandsModel.fromJson(dynamic json) {
+    this.id = json['number'];
+    this.name = json['name'];
+    this.address = '${json['address']}, Ljubljana, Slovenia';
+    this.location = Pair<double, double>(
+      json['position']['latitude'],
+      json['position']['longitude'],
+    );
+    this.capacity = json['totalStands']['capacity'];
+    this.availableBikes = json['totalStands']['availabilities']['bikes'];
+  }
 }

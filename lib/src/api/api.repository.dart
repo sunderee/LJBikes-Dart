@@ -23,7 +23,7 @@ class ApiRepository implements _IApiRepository {
           'contract': 'ljubljana',
         },
       ) as List<dynamic>)
-          .map((dynamic element) => StandsModel().fromJson(element))
+          .map((dynamic element) => StandsModel.fromJson(element))
           .toList();
     } on ApiException catch (exception) {
       print('ApiException: ${exception.error}\n${exception.description}');
