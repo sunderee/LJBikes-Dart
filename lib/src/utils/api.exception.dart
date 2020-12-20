@@ -3,7 +3,7 @@ class ApiException implements Exception {
   final String? description;
 
   const ApiException({
-    this.error = 'Unknown error related to API requests',
+    required this.error,
     this.description,
   });
 }

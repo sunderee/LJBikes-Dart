@@ -1,7 +1,7 @@
 import 'package:ljbikes/src/ljbikes_base.dart';
 
 Future<void> main() async {
-  final stands = await retrieveAllStands();
+  final stands = await LJBikesBase.instance.retrieveAllStands();
   print('Found total of ${stands?.length} stands.');
   print('Printing stands with more than 5 available bikes...');
   stands
